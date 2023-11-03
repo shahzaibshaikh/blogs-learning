@@ -27,7 +27,6 @@ app.post("/posts", (req: Request, res: Response) => {
     id,
     title
   };
-  console.log(posts);
 
   res.status(201).send(posts[id]);
 });
