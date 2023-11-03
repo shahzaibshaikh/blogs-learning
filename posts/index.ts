@@ -1,7 +1,11 @@
 import express, { Request, Response } from "express";
 import { v4 as uuidv4 } from "uuid";
-const app = express();
+import cors from "cors";
 
+const app = express();
+app.use(express.json());
+
+app.use(cors());
 interface Post {
   [key: string]: {
     id: string;
@@ -10,7 +14,6 @@ interface Post {
 }
 
 const posts: Post = {};
-app.use(express.json());
 
 app.get("/posts", (req: Request, res: Response) => {
   res.send(posts);
