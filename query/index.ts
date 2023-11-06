@@ -21,7 +21,9 @@ interface Comment {
 
 const posts: Posts = {};
 
-app.get("/posts", (req: Request, res: Response) => {});
+app.get("/posts", (req: Request, res: Response) => {
+  res.send(posts);
+});
 
 app.post("/posts", (req: Request, res: Response) => {
   const { type, data } = req.body;
@@ -31,7 +33,12 @@ app.post("/posts", (req: Request, res: Response) => {
   }
 
   if (type === "CommentCreated") {
+    const { id, content, postId } = data;
+    const post = posts[postId];
+    post.comments.push({ id, content });
   }
+
+  res.send({});
 });
 
 app.listen(4002, () => {
