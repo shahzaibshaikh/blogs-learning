@@ -15,6 +15,7 @@ function PostList() {
   interface Comment {
     id: string;
     content: string;
+    status: string;
   }
 
   const [posts, setPosts] = useState<Post>({});
