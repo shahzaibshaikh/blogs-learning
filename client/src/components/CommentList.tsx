@@ -1,8 +1,5 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-
 interface CommentProps {
-  comment: Comment[];
+  comments: Comment[];
 }
 
 interface Comment {
@@ -10,19 +7,10 @@ interface Comment {
   content: string;
 }
 
-function CommentList({ comment }: CommentProps) {
-  const [comm, setComments] = useState<Comment[]>([]);
-
-  const fetchData = async () => {
-    const res = await axios.get(`http://localhost:4001/posts/${postId}/comments`);
-    setComments(res.data);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const renderedComments = comment.map(comm => <li key={comm.id}>{comm.content}</li>);
+function CommentList({ comments }: CommentProps) {
+  const renderedComments = comments.map(comment => (
+    <li key={comment.id}>{comment.content}</li>
+  ));
 
   return <ul>{renderedComments}</ul>;
 }
