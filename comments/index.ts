@@ -35,7 +35,8 @@ app.post("/posts/:id/comments", async (req: Request, res: Response) => {
     data: {
       id: commentId,
       content,
-      postId: req.params.id
+      postId: req.params.id,
+      status: "pending"
     }
   });
 

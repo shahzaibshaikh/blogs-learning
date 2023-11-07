@@ -17,6 +17,7 @@ interface Posts {
 interface Comment {
   id: string;
   content: string;
+  status: string;
 }
 
 const posts: Posts = {};
@@ -33,12 +34,12 @@ app.post("/events", (req: Request, res: Response) => {
   }
 
   if (type === "CommentCreated") {
-    const { id, content, postId } = data;
+    const { id, content, postId, status } = data;
     if (posts[postId]) {
       if (!posts[postId].comments) {
         posts[postId].comments = []; // Initialize the comments array if it doesn't exist
       }
-      posts[postId].comments.push({ id, content });
+      posts[postId].comments.push({ id, content, status });
     }
   }
   console.log(posts);
