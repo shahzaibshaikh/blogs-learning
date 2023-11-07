@@ -21,7 +21,7 @@ interface Comment {
 
 const posts: Posts = {};
 
-app.get("/events", (req: Request, res: Response) => {
+app.get("/posts", (req: Request, res: Response) => {
   res.send(posts);
 });
 
