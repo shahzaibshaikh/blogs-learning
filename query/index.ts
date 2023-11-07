@@ -41,6 +41,7 @@ app.post("/events", (req: Request, res: Response) => {
       posts[postId].comments.push({ id, content });
     }
   }
+  console.log(posts);
 
   res.send({});
 });
