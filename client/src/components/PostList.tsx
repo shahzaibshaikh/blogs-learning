@@ -5,14 +5,23 @@ import CommentList from "./CommentList";
 
 function PostList() {
   interface Post {
-    id: string;
-    title: string;
+    [postId: string]: {
+      id: string;
+      title: string;
+      comments: Comment[];
+    };
   }
 
-  const [posts, setPosts] = useState<{ [key: string]: Post }>({});
+  interface Comment {
+    id: string;
+    content: string;
+  }
+
+  const [posts, setPosts] = useState<Post>({});
 
   const fetchPosts = async () => {
-    const res = await axios.get("http://localhost:4000/posts");
+    const res = await axios.get("http://localhost:4002/posts");
+
     setPosts(res.data);
   };
 
@@ -25,7 +34,7 @@ function PostList() {
       <div className='card' style={{ width: "30%", marginBottom: "20px" }} key={post.id}>
         <div className='card-body'>
           <h3>{post.title}</h3>
-          <CommentList postId={post.id} />
+          <CommentList comment={post.comments} />
           <CommentCreate postId={post.id} />
         </div>
       </div>
