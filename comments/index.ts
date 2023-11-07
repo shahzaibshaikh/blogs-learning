@@ -55,6 +55,9 @@ app.post("/events", (req: Request, res: Response) => {
     const comment = comments.find(comment => {
       return comment.id === id;
     });
+    if (comment) {
+      comment.status = status;
+    }
   }
 
   res.send({});
