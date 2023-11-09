@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
+import axios from "axios";
 
 const app = express();
 app.use(express.json());
@@ -22,7 +23,7 @@ interface Comment {
 
 const posts: Posts = {};
 
-const handleEvent = (type, data) => {
+const handleEvent = (type: string, data: any) => {
   if (type === "PostCreated") {
     const { id, title } = data;
     posts[id] = { id, title, comments: [] };
@@ -63,6 +64,8 @@ app.post("/events", (req: Request, res: Response) => {
   res.send({});
 });
 
-app.listen(4002, () => {
+app.listen(4002, async () => {
   console.log("Listening on 4002");
+
+  await axios.get("http://localhost:4005/events");
 });
