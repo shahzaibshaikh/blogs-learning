@@ -22,12 +22,7 @@ interface Comment {
 
 const posts: Posts = {};
 
-app.get("/posts", (req: Request, res: Response) => {
-  res.send(posts);
-});
-
-app.post("/events", (req: Request, res: Response) => {
-  const { type, data } = req.body;
+const handleEvent = (type, data) => {
   if (type === "PostCreated") {
     const { id, title } = data;
     posts[id] = { id, title, comments: [] };
@@ -54,8 +49,16 @@ app.post("/events", (req: Request, res: Response) => {
       comment.content = content;
     }
   }
+};
 
-  console.log(posts);
+app.get("/posts", (req: Request, res: Response) => {
+  res.send(posts);
+});
+
+app.post("/events", (req: Request, res: Response) => {
+  const { type, data } = req.body;
+
+  handleEvent(type, data);
 
   res.send({});
 });
