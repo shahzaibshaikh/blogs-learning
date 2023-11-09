@@ -6,8 +6,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+const events: any = [];
+
 app.post("/events", (req: Request, res: Response) => {
   const event = req.body;
+  events.push(event);
   axios.post("http://localhost:4000/events", event);
   axios.post("http://localhost:4001/events", event);
   axios.post("http://localhost:4002/events", event);
