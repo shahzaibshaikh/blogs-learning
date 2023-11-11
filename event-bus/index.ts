@@ -5,7 +5,7 @@ import axios from "axios";
 const app = express();
 app.use(express.json());
 app.use(cors());
-//added comment
+
 const events: any = [];
 
 app.post("/events", (req: Request, res: Response) => {
