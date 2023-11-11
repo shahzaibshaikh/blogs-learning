@@ -6,8 +6,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const events: any = [];
-
 app.post("/events", (req: Request, res: Response) => {
   const event = req.body;
   events.push(event);
