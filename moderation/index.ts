@@ -14,8 +14,7 @@ app.post("/events", async (req: Request, res: Response) => {
         id: data.id,
         postId: data.postId,
         status,
-        content: data.content,
-        new: comment1
+        content: data.content
       }
     });
   }
