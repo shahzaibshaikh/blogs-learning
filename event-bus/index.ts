@@ -21,6 +21,7 @@ app.post("/events", (req: Request, res: Response) => {
 
 app.get("/events", (req: Request, res: Response) => {
   res.send(events);
+});
 
 app.listen(4005, () => {
   console.log("Listening on 4005");
