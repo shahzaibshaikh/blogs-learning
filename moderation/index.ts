@@ -13,7 +13,7 @@ app.post("/events", async (req: Request, res: Response) => {
       data: {
         id: data.id,
         postId: data.postId,
-
+        status,
         content: data.content
       }
     });
