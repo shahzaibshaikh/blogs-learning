@@ -16,7 +16,7 @@ app.post("/events", async (req: Request, res: Response) => {
         status,
         content: data.content
       }
-    });
+    
   }
 });
 
