@@ -37,7 +37,7 @@ app.post("/posts", async (req: Request, res: Response) => {
     }
   });
 
-  res.status(201).send(posts[id]);
+  res.status(200).send(posts[id]);
 });
 
 app.post("/events", (req: Request, res: Response) => {
