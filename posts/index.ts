@@ -40,7 +40,7 @@ app.post("/posts", async (req: Request, res: Response) => {
   res.status(201).send(posts[id]);
 });
 
-app.post("/events", (req: Request, res: Response) => {
+app.post("/events/detail", (req: Request, res: Response) => {
   console.log("Received Event", req.body.type);
   res.send({});
 });
