@@ -45,6 +45,6 @@ app.post("/events/detail", (req: Request, res: Response) => {
   res.send({});
 });
 
-app.listen(4008, () => {
+app.listen(4000, () => {
   console.log("Listening on 4000");
 });
