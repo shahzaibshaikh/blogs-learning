@@ -9,3 +9,4 @@ spec:
   ports:
     - name: posts
       protocol: TCP
+      port: 4000
